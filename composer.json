@@ -46,6 +46,7 @@
         "liip/imagine-bundle":                  "~1.0",
         "mathiasverraes/money":                 "*@dev",
         "omnipay/omnipay":                      "~2.3",
+        "payum/omnipay-bridge":                 "~0.13",
         "payum/payum":                          "~0.12",
         "payum/payum-bundle":                   "~0.12",
         "prezent/doctrine-translatable":        "1.0.*@dev",
