@@ -77,6 +77,8 @@ class BackendMenuBuilder extends MenuBuilder
             )
         ));
 
+        $menu->setCurrentUri($this->request->getRequestUri());
+
         $childOptions = array(
             'childrenAttributes' => array('class' => 'nav'),
             'labelAttributes'    => array('class' => 'nav-header')
@@ -238,6 +240,11 @@ class BackendMenuBuilder extends MenuBuilder
             'route' => 'sylius_backend_promotion_create',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-plus-sign'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.new_promotion', $section)));
+        
+        $child->addChild('report', array(
+            'route' => 'sylius_backend_report_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-list-alt'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.report', $section)));
     }
 
     /**
@@ -258,6 +265,11 @@ class BackendMenuBuilder extends MenuBuilder
             'route' => 'sylius_backend_general_settings',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-info-sign'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.general_settings', $section)));
+
+        $child->addChild('emails', array(
+            'route' => 'sylius_backend_email_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-envelope'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.emails', $section)));
 
         $child->addChild('locales', array(
             'route' => 'sylius_backend_locale_index',

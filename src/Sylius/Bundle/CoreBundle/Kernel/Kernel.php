@@ -22,12 +22,17 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
  */
 abstract class Kernel extends BaseKernel
 {
-    const VERSION         = '0.13.0-dev';
-    const VERSION_ID      = '00130';
+    const VERSION         = '0.14.0-dev';
+    const VERSION_ID      = '00140';
     const MAJOR_VERSION   = '0';
-    const MINOR_VERSION   = '13';
+    const MINOR_VERSION   = '14';
     const RELEASE_VERSION = '0';
     const EXTRA_VERSION   = 'DEV';
+
+    const ENV_DEV = 'dev';
+    const ENV_PROD = 'prod';
+    const ENV_TEST = 'test';
+    const ENV_STAGING = 'staging';
 
     /**
      * {@inheritdoc}
@@ -50,7 +55,9 @@ abstract class Kernel extends BaseKernel
             new \Sylius\Bundle\TaxationBundle\SyliusTaxationBundle(),
             new \Sylius\Bundle\ShippingBundle\SyliusShippingBundle(),
             new \Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
+            new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
+            new \Sylius\Bundle\ReportBundle\SyliusReportBundle(),
             new \Sylius\Bundle\PromotionBundle\SyliusPromotionBundle(),
             new \Sylius\Bundle\AddressingBundle\SyliusAddressingBundle(),
             new \Sylius\Bundle\InventoryBundle\SyliusInventoryBundle(),
@@ -105,6 +112,10 @@ abstract class Kernel extends BaseKernel
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
             new \A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+
+            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new \Sylius\Bundle\FixturesBundle\SyliusFixturesBundle(),
         );
 
         return $bundles;

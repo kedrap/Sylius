@@ -107,8 +107,16 @@ class ExtensionsRequirements extends RequirementCollection
                 $translator->trans('sylius.extensions.help', array('%extension%' => 'iconv'), 'requirements')
             ))
             ->add(new Requirement(
+                $translator->trans('sylius.extensions.exif', array(), 'requirements'),
+                $status = function_exists('exif_read_data'),
+                $on,
+                $status ? $on : $off,
+                true,
+                $translator->trans('sylius.extensions.help', array('%extension%' => 'exif'), 'requirements')
+            ))
+            ->add(new Requirement(
                 $translator->trans('sylius.extensions.intl', array(), 'requirements'),
-                $status = class_exists('Locale'),
+                $status = extension_loaded('intl'),
                 $on,
                 $status ? $on : $off,
                 false,
@@ -116,7 +124,7 @@ class ExtensionsRequirements extends RequirementCollection
             ))
         ;
 
-        if (class_exists('Locale')) {
+        if (extension_loaded('intl')) {
             if (defined('INTL_ICU_VERSION')) {
                 $version = INTL_ICU_VERSION;
             } else {

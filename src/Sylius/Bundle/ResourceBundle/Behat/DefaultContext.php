@@ -161,7 +161,7 @@ abstract class DefaultContext extends RawMinkContext implements Context, KernelA
         $list = explode(',', $configurationString);
 
         foreach ($list as $parameter) {
-            list($key, $value) = explode(':', $parameter);
+            list($key, $value) = explode(':', $parameter, 2);
             $key = strtolower(trim(str_replace(' ', '_', $key)));
 
             switch ($key) {
@@ -175,6 +175,10 @@ abstract class DefaultContext extends RawMinkContext implements Context, KernelA
 
                 case 'variant':
                     $configuration[$key] = $this->getRepository('product')->findOneBy(array('name' => trim($value)))->getMasterVariant()->getId();
+                    break;
+
+                case 'amount':
+                    $configuration[$key] = (int) $value;
                     break;
 
                 default:

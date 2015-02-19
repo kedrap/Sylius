@@ -39,6 +39,7 @@ sylius:
                 taxonomies: Categorization
                 users: Users
                 zones: Zones
+                emails: Emails
             sidebar:
                 api_clients: API clients
                 assortment: Assortment
@@ -65,6 +66,7 @@ sylius:
                 payments: Payments
                 products: Products
                 promotions: Promotions
+                report: Reports
                 attributes: Configure attributes
                 archetypes: Product archetypes
                 sales: Orders
@@ -79,6 +81,7 @@ sylius:
                 taxonomies: Categorization
                 users: Users
                 zones: Zones
+                emails: Emails
     frontend:
         menu:
             account:
